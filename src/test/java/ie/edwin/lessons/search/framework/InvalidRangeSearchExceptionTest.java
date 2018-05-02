@@ -1,0 +1,63 @@
+package ie.edwin.lessons.search.framework;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import ie.edwin.lessons.search.core.RangeContainer;
+import ie.edwin.lessons.search.core.RangeContainerFactory;
+import ie.edwin.lessons.search.framework.forkjoin.ForkJoinRangeContainerFactory;
+import ie.edwin.lessons.search.framework.stream.ParallelStreamRangeContainerFactory;
+
+
+
+public class InvalidRangeSearchExceptionTest {
+	
+	private RangeContainer parallelRangeContainer;
+	private RangeContainer forkJoinContianer;
+	
+	@Before
+	public void setUp(){
+		RangeContainerFactory rf = new ParallelStreamRangeContainerFactory();
+		RangeContainerFactory rf2 = new ForkJoinRangeContainerFactory();
+		parallelRangeContainer = rf.createContainer(new long[]{10,12,17,21,2,15,16});
+		forkJoinContianer = rf2.createContainer(new long[]{10,12,17,21,2,15,16});
+	}
+	
+
+	@Test(expected= IllegalArgumentException.class)
+	public void invalidRange_Parallel_to_lt_from(){
+		 parallelRangeContainer.findIdsInRange(2, 1, true, true);
+	}
+	
+	@Test(expected= IllegalArgumentException.class)
+	public void invalidRange_ForkJoin_to_lt_from(){
+		 forkJoinContianer.findIdsInRange(2, 1, true, true);
+		
+	}
+	
+	@Test(expected= IllegalArgumentException.class)
+	public void invalidRange_Parallel_to_eq_from(){
+		parallelRangeContainer.findIdsInRange(2, 2, true, true);
+	}
+	
+	@Test(expected= IllegalArgumentException.class)
+	public void invalidRange_ForkJoin_to_eq_from(){
+		forkJoinContianer.findIdsInRange(2, 2, true, true);
+		
+	}
+	
+	@Test(expected= IllegalArgumentException.class)
+	public void invalidRange_Parallel_from_negative(){
+		parallelRangeContainer.findIdsInRange(-2, 2, true, true);
+	}
+	
+	@Test(expected= IllegalArgumentException.class)
+	public void invalidRange_ForkJoin_from_negative(){
+		forkJoinContianer.findIdsInRange(-2, 2, true, true);
+		
+	}
+	
+	
+	
+
+}

@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
  * A {@link ConstraintValidator} Implementation to validate Strings in a List
  * match with Email regex
  * 
- * @author DEI
+ * @author Edwin
  *
  */
 public class EmailListConstraint implements ConstraintValidator<EmailConstraint, List<String>> {

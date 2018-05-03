@@ -28,11 +28,11 @@ public class UsererApiController {
 	@Autowired
 	private UserApiService service;
 
-	@GetMapping(path = { "/checksubscription/{type}", "/checksubscription" }, produces= {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@GetMapping(path = { "/checkregisteration/{type}", "/checkregisteration" }, produces= {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
 	public List<User> getSubscriptionForUsersByType(@EmailConstraint @RequestParam("email") final List<String> emails,
 			@PathVariable(name = "type", required = false) final String type) {
-		logger.info("Going to check subscribtions for users with email {}",emails.toString());
-		final String subscriptiontype = StringUtils.isEmpty(type) ? "all" : type;
+		logger.info("Going to check registeration for users with email {}",emails.toString());
+		final String subscriptiontype = StringUtils.isEmpty(type) ? "full" : type;
 		final List<User> subscriptions = service.getSubscriptionForEmailsByType(emails, subscriptiontype);
 		return subscriptions;
 	}

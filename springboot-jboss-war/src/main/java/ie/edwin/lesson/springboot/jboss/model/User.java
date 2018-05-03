@@ -5,14 +5,14 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 /**
- * DB model for EI.COM EI_BASE.EMAIL_SUBSCRIPTION Table
+ * DB model for user Table
  * This model hold properties that represent all the columns of subscription table 
- * This model has an additional property isSubscribed that is used to represent the subscription status, default value is true
- * Since the table doesn't have a primary key, it's not possible to use JPA api over the model
+ * This model has an additional property isResgisterd that is used to represent the subscription status, default value is true
+ * This is table is special case :  Table doesn't have a primary key, so it's not possible to use JPA api over the model
  * 
- * We can achieve the JPA usage by using an embedded ID to over come the primary key issue, but it doesn't worth that effort it in current phase  
+ * We can achieve the JPA usage by using an embedded ID to over come the primary key issue, but it's not what I'm intended to do in this project  
  * 
- * @author DEI
+ * @author Edwin
  *
  */
 public class User {

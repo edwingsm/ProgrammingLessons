@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * BadRequestExceptionHandler 
- * @author DEI
+ * @author Edwin
  *
  */
 @ControllerAdvice

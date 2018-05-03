@@ -4,7 +4,7 @@ package ie.edwin.lesson.code.solutions;
 //are anagrams of each other
 import java.io.*;
 
-class GFG{
+class Anagaram{
   
  /* function to check whether two strings are 
  anagram of each other */

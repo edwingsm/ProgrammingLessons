@@ -1,4 +1,0 @@
-<jboss-web>
-    <!-- <context-root>${project.artifactId}</context-root> -->
-     <context-root>user-api</context-root>
-</jboss-web>

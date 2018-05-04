@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import ie.edwin.lessons.search.core.IdHolder;
 import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
-import ie.edwin.lessons.search.framework.ResultSetIds;
+import ie.edwin.lessons.search.framework.ResultSetIdHolder;
 import ie.edwin.lessons.search.utils.SearchUtils;
 
 public class ParallelStreamIntervalContainer implements IntervalContainer {
@@ -37,7 +37,7 @@ public class ParallelStreamIntervalContainer implements IntervalContainer {
 		}
 
 		final Map<Short, Long> result = SearchUtils.searchParallel(dataSource, fromValue, toValue, fromInclusive, toInclusive);
-		return new ResultSetIds(result.keySet());
+		return new ResultSetIdHolder(result.keySet());
 	}
 
 }

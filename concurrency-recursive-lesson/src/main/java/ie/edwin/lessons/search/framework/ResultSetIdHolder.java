@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 import ie.edwin.lessons.search.core.IdHolder;
 
-public class ResultSetIds implements IdHolder {
+public class ResultSetIdHolder implements IdHolder {
 	
 	/**
 	 * ConcurrentSkipListSet are Fail-safe and Thread-safe
@@ -17,7 +17,7 @@ public class ResultSetIds implements IdHolder {
 	private Iterator<Short> idIterator = null;
 
 
-	public ResultSetIds(Collection<Short> inputs)  {
+	public ResultSetIdHolder(Collection<Short> inputs)  {
 		if(inputs == null || inputs.isEmpty())
 			idList = new ConcurrentSkipListSet<>();
 		

@@ -7,7 +7,7 @@ import java.util.concurrent.ForkJoinPool;
 import ie.edwin.lessons.search.core.IdHolder;
 import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
-import ie.edwin.lessons.search.framework.ResultSetIds;
+import ie.edwin.lessons.search.framework.ResultSetIdHolder;
 
 public class ForkJoinIntervalContainer implements IntervalContainer {
 
@@ -42,6 +42,6 @@ public class ForkJoinIntervalContainer implements IntervalContainer {
 		SearchTask task = new SearchTask(dataSource, fromValue, toValue, fromInclusive, toInclusive);
 		Map<Short, Long> map = forkJoinPool.invoke(task);
 		forkJoinPool.shutdown();
-		return new ResultSetIds(map.keySet());
+		return new ResultSetIdHolder(map.keySet());
 	}
 }

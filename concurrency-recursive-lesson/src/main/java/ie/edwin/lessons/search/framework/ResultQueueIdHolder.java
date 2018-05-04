@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 import ie.edwin.lessons.search.core.IdHolder;
 
-public class ResultQueueIds implements IdHolder {
+public class ResultQueueIdHolder implements IdHolder {
 	
 	/**
 	 * PriorityQueue uses less memory
@@ -13,7 +13,7 @@ public class ResultQueueIds implements IdHolder {
 	 */
 	private PriorityQueue<Short> idQueue;
 
-	public ResultQueueIds(Collection<Short> inputs) {
+	public ResultQueueIdHolder(Collection<Short> inputs) {
 		if (inputs == null || inputs.isEmpty())
 			idQueue = new PriorityQueue<>();
 

@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ForkJoinPool;
 
-import ie.edwin.lessons.search.core.Ids;
-import ie.edwin.lessons.search.core.RangeContainer;
+import ie.edwin.lessons.search.core.IdHolder;
+import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 import ie.edwin.lessons.search.framework.ResultSetIds;
 
-public class ForkJoinRangeContainer implements RangeContainer {
+public class ForkJoinRangeContainer implements IntervalContainer {
 
 	private Map<Short, Long> dataSource = new HashMap<Short, Long>();
 
@@ -31,7 +31,7 @@ public class ForkJoinRangeContainer implements RangeContainer {
 		}
 	}
 
-	public Ids findIdsInRange(final long fromValue, long toValue, boolean fromInclusive, boolean toInclusive) {
+	public IdHolder findIdsInRange(final long fromValue, long toValue, boolean fromInclusive, boolean toInclusive) {
 		if (fromValue > toValue || (fromValue == toValue) || fromValue < 0 || toValue < 0) {
 			throw new IllegalArgumentException(
 					"The give Search range in not valid, Please provide a valid search range");

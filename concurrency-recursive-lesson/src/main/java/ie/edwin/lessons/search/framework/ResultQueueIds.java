@@ -3,9 +3,9 @@ package ie.edwin.lessons.search.framework;
 import java.util.Collection;
 import java.util.PriorityQueue;
 
-import ie.edwin.lessons.search.core.Ids;
+import ie.edwin.lessons.search.core.IdHolder;
 
-public class ResultQueueIds implements Ids {
+public class ResultQueueIds implements IdHolder {
 	
 	/**
 	 * PriorityQueue uses less memory
@@ -22,7 +22,7 @@ public class ResultQueueIds implements Ids {
 
 	@Override
 	public short nextId() {
-		return  idQueue.size() > 0 ? idQueue.remove() : Ids.END_OF_IDS;
+		return  idQueue.size() > 0 ? idQueue.remove() : IdHolder.END_OF_IDS;
 	}
 
 }

@@ -4,13 +4,13 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-import ie.edwin.lessons.search.core.Ids;
-import ie.edwin.lessons.search.core.RangeContainer;
+import ie.edwin.lessons.search.core.IdHolder;
+import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 import ie.edwin.lessons.search.framework.ResultSetIds;
 import ie.edwin.lessons.search.utils.SearchUtils;
 
-public class ParallelStreamRangeContainer implements RangeContainer {
+public class ParallelStreamRangeContainer implements IntervalContainer {
 
 	private ConcurrentNavigableMap<Short, Long> dataSource = new ConcurrentSkipListMap<Short, Long>();
 
@@ -29,7 +29,7 @@ public class ParallelStreamRangeContainer implements RangeContainer {
 		}
 	}
 
-	public Ids findIdsInRange(final long fromValue, final long toValue, final boolean fromInclusive,
+	public IdHolder findIdsInRange(final long fromValue, final long toValue, final boolean fromInclusive,
 			final boolean toInclusive) {
 		if (fromValue > toValue || (fromValue == toValue) || fromValue < 0) {
 			throw new IllegalArgumentException(

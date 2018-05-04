@@ -1,15 +1,15 @@
 package ie.edwin.lessons.search.framework.forkjoin.index;
 
-import ie.edwin.lessons.search.core.RangeContainer;
-import ie.edwin.lessons.search.core.RangeContainerFactory;
+import ie.edwin.lessons.search.core.IntervalContainer;
+import ie.edwin.lessons.search.core.IntervalContainerFactory;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 
-public class IndexRangeContainerFactory implements RangeContainerFactory {
+public class IndexRangeContainerFactory implements IntervalContainerFactory {
 
 	
 
-	public RangeContainer createContainer(long[] data) {
-		 RangeContainer rangeContainer = null;
+	public IntervalContainer createContainer(long[] data) {
+		 IntervalContainer rangeContainer = null;
 		try {
 			rangeContainer = new IndexRangeContainer(data);
 		} catch (ContainerOutofBoundException e) {

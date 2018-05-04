@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.NavigableSet;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-import ie.edwin.lessons.search.core.Ids;
+import ie.edwin.lessons.search.core.IdHolder;
 
-public class ResultSetIds implements Ids {
+public class ResultSetIds implements IdHolder {
 	
 	/**
 	 * ConcurrentSkipListSet are Fail-safe and Thread-safe

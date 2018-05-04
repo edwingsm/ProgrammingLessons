@@ -3,8 +3,8 @@ package ie.edwin.lessons.search.framework;
 import org.junit.Before;
 import org.junit.Test;
 
-import ie.edwin.lessons.search.core.RangeContainer;
-import ie.edwin.lessons.search.core.RangeContainerFactory;
+import ie.edwin.lessons.search.core.IntervalContainer;
+import ie.edwin.lessons.search.core.IntervalContainerFactory;
 import ie.edwin.lessons.search.framework.forkjoin.ForkJoinRangeContainerFactory;
 import ie.edwin.lessons.search.framework.stream.ParallelStreamRangeContainerFactory;
 
@@ -12,13 +12,13 @@ import ie.edwin.lessons.search.framework.stream.ParallelStreamRangeContainerFact
 
 public class InvalidRangeSearchExceptionTest {
 	
-	private RangeContainer parallelRangeContainer;
-	private RangeContainer forkJoinContianer;
+	private IntervalContainer parallelRangeContainer;
+	private IntervalContainer forkJoinContianer;
 	
 	@Before
 	public void setUp(){
-		RangeContainerFactory rf = new ParallelStreamRangeContainerFactory();
-		RangeContainerFactory rf2 = new ForkJoinRangeContainerFactory();
+		IntervalContainerFactory rf = new ParallelStreamRangeContainerFactory();
+		IntervalContainerFactory rf2 = new ForkJoinRangeContainerFactory();
 		parallelRangeContainer = rf.createContainer(new long[]{10,12,17,21,2,15,16});
 		forkJoinContianer = rf2.createContainer(new long[]{10,12,17,21,2,15,16});
 	}

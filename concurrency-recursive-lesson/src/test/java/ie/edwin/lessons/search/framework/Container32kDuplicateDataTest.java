@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import ie.edwin.lessons.search.core.Ids;
-import ie.edwin.lessons.search.core.RangeContainer;
-import ie.edwin.lessons.search.core.RangeContainerFactory;
+import ie.edwin.lessons.search.core.IdHolder;
+import ie.edwin.lessons.search.core.IntervalContainer;
+import ie.edwin.lessons.search.core.IntervalContainerFactory;
 import ie.edwin.lessons.search.framework.forkjoin.ForkJoinRangeContainerFactory;
 import ie.edwin.lessons.search.framework.forkjoin.index.IndexRangeContainerFactory;
 import ie.edwin.lessons.search.framework.stream.ParallelStreamRangeContainerFactory;
@@ -16,15 +16,15 @@ import ie.edwin.lessons.search.framework.stream.ParallelStreamRangeContainerFact
 
 public class Container32kDuplicateDataTest {
 	
-	private RangeContainer parallelRangeContainer;
-	private RangeContainer forkJoinContianer;
-	private RangeContainer indexRangeContianer;
+	private IntervalContainer parallelRangeContainer;
+	private IntervalContainer forkJoinContianer;
+	private IntervalContainer indexRangeContianer;
 	
 	@Before
 	public void setUp(){
-		RangeContainerFactory rf = new ParallelStreamRangeContainerFactory();
-		RangeContainerFactory rf2 = new ForkJoinRangeContainerFactory();
-		RangeContainerFactory rf3 = new IndexRangeContainerFactory();
+		IntervalContainerFactory rf = new ParallelStreamRangeContainerFactory();
+		IntervalContainerFactory rf2 = new ForkJoinRangeContainerFactory();
+		IntervalContainerFactory rf3 = new IndexRangeContainerFactory();
 		long[] data = genrateTestData();
 		parallelRangeContainer = rf.createContainer(data);
 		forkJoinContianer = rf2.createContainer(data);
@@ -44,7 +44,7 @@ public class Container32kDuplicateDataTest {
 	
 	@Test
 	public void runARangeQuery_Parallel(){
-		Ids ids = parallelRangeContainer.findIdsInRange(14, 17, true, true);
+		IdHolder ids = parallelRangeContainer.findIdsInRange(14, 17, true, true);
 		assertEquals(13, ids.nextId());
 		assertEquals(14, ids.nextId());
 		assertEquals(15, ids.nextId());
@@ -53,12 +53,12 @@ public class Container32kDuplicateDataTest {
 		assertEquals(16014, ids.nextId());
 		assertEquals(16015, ids.nextId());
 		assertEquals(16016, ids.nextId());
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 	}
 	
 	@Test
 	public void runARangeQuery_forkJoin(){
-		Ids ids = forkJoinContianer.findIdsInRange(14, 17, true, true);
+		IdHolder ids = forkJoinContianer.findIdsInRange(14, 17, true, true);
 		assertEquals(13, ids.nextId());
 		assertEquals(14, ids.nextId());
 		assertEquals(15, ids.nextId());
@@ -67,13 +67,13 @@ public class Container32kDuplicateDataTest {
 		assertEquals(16014, ids.nextId());
 		assertEquals(16015, ids.nextId());
 		assertEquals(16016, ids.nextId());
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 		
 	}
 	
 	@Test
 	public void runARangeQuery_index(){
-		Ids ids = indexRangeContianer.findIdsInRange(14, 17, true, true);
+		IdHolder ids = indexRangeContianer.findIdsInRange(14, 17, true, true);
 		assertEquals(13, ids.nextId());
 		assertEquals(14, ids.nextId());
 		assertEquals(15, ids.nextId());
@@ -82,61 +82,61 @@ public class Container32kDuplicateDataTest {
 		assertEquals(16014, ids.nextId());
 		assertEquals(16015, ids.nextId());
 		assertEquals(16016, ids.nextId());
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 		
 	}
 	
 	
 	@Test
 	public void runARangeQuery_forkJoin_NoResult(){
-		Ids ids = forkJoinContianer.findIdsInRange(40000, 50000, true, true);
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		IdHolder ids = forkJoinContianer.findIdsInRange(40000, 50000, true, true);
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 		
 	}
 	@Test
 	public void runARangeQuery_Parallel_NoResult(){
-		Ids ids = forkJoinContianer.findIdsInRange(40000, 50000, true, true);
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		IdHolder ids = forkJoinContianer.findIdsInRange(40000, 50000, true, true);
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 		
 	}
 	
 	@Test
 	public void runARangeQuery_Index_NoResult(){
-		Ids ids = indexRangeContianer.findIdsInRange(40000, 50000, true, true);
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		IdHolder ids = indexRangeContianer.findIdsInRange(40000, 50000, true, true);
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 		
 	}
 	
 	
 	@Test
 	public void runARangeQuery_Parallel_exclusive(){
-		Ids ids = parallelRangeContainer.findIdsInRange(14, 17, false, false);
+		IdHolder ids = parallelRangeContainer.findIdsInRange(14, 17, false, false);
 		assertEquals(14, ids.nextId());
 		assertEquals(15, ids.nextId());
 		assertEquals(16014, ids.nextId());
 		assertEquals(16015, ids.nextId());
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 	}
 	
 	@Test
 	public void runARangeQuery_forkJoin_exclusive(){
-		Ids ids = forkJoinContianer.findIdsInRange(14, 17, false, false);
+		IdHolder ids = forkJoinContianer.findIdsInRange(14, 17, false, false);
 		assertEquals(14, ids.nextId());
 		assertEquals(15, ids.nextId());
 		assertEquals(16014, ids.nextId());
 		assertEquals(16015, ids.nextId());
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 		
 	}
 	
 	@Test
 	public void runARangeQuery_Index_exclusive(){
-		Ids ids = indexRangeContianer.findIdsInRange(14, 17, false, false);
+		IdHolder ids = indexRangeContianer.findIdsInRange(14, 17, false, false);
 		assertEquals(14, ids.nextId());
 		assertEquals(15, ids.nextId());
 		assertEquals(16014, ids.nextId());
 		assertEquals(16015, ids.nextId());
-		assertEquals(Ids.END_OF_IDS, ids.nextId());
+		assertEquals(IdHolder.END_OF_IDS, ids.nextId());
 		
 	}
 

@@ -1,15 +1,15 @@
 package ie.edwin.lessons.search.framework.stream;
 
-import ie.edwin.lessons.search.core.RangeContainer;
-import ie.edwin.lessons.search.core.RangeContainerFactory;
+import ie.edwin.lessons.search.core.IntervalContainer;
+import ie.edwin.lessons.search.core.IntervalContainerFactory;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 
-public class ParallelStreamRangeContainerFactory implements RangeContainerFactory {
+public class ParallelStreamRangeContainerFactory implements IntervalContainerFactory {
 
 	
 
-	public RangeContainer createContainer(long[] data) {
-		 RangeContainer rangeContainer = null;
+	public IntervalContainer createContainer(long[] data) {
+		 IntervalContainer rangeContainer = null;
 		try {
 			rangeContainer = new ParallelStreamRangeContainer(data);
 		} catch (ContainerOutofBoundException e) {

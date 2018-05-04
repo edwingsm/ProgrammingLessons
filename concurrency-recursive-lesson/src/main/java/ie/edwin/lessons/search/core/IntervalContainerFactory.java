@@ -1,6 +1,6 @@
 package ie.edwin.lessons.search.core;
 
-public interface RangeContainerFactory {
+public interface IntervalContainerFactory {
 	
 	/**
 	 * Builds an immutable container optimized for range queries. Data is expected
@@ -10,6 +10,6 @@ public interface RangeContainerFactory {
 	 * corresponding net pay. E.g. data[5]=2000 means that employee #6 has net pay
 	 * of . 2000.
 	 */
-	RangeContainer createContainer(long[] data);
+	IntervalContainer createContainer(long[] data);
 
 }

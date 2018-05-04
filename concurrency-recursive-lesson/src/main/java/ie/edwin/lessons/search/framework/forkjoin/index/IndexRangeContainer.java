@@ -8,12 +8,12 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ForkJoinPool;
 
-import ie.edwin.lessons.search.core.Ids;
-import ie.edwin.lessons.search.core.RangeContainer;
+import ie.edwin.lessons.search.core.IdHolder;
+import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 import ie.edwin.lessons.search.framework.ResultSetIds;
 
-public class IndexRangeContainer implements RangeContainer {
+public class IndexRangeContainer implements IntervalContainer {
 
 	private HashMap<Short, Long> dataSource = new HashMap<Short, Long>();
 	private NavigableMap<Long, List<Short>> index = new ConcurrentSkipListMap<>();
@@ -46,7 +46,7 @@ public class IndexRangeContainer implements RangeContainer {
 
 	
 	
-	public Ids findIdsInRange(final long fromValue, final long toValue, final boolean fromInclusive,
+	public IdHolder findIdsInRange(final long fromValue, final long toValue, final boolean fromInclusive,
 			final boolean toInclusive) {
 		if (fromValue > toValue || (fromValue == toValue) || fromValue < 0) {
 			throw new IllegalArgumentException(

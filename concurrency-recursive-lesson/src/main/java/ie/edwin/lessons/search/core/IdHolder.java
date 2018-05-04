@@ -1,6 +1,6 @@
 package ie.edwin.lessons.search.core;
 
-public interface Ids {
+public interface IdHolder {
 	/**
 	 * return the next id in sequence, -1 if at end of data. The ids should be in
 	 * sorted order (from lower to higher) to facilitate the query distribution into

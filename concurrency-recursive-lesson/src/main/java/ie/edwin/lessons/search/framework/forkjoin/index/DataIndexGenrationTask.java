@@ -31,7 +31,7 @@ public class DataIndexGenrationTask extends RecursiveTask<Map<Long, List<Short>>
 			int total=data.size(),intial=0, mid=total/2 ;
 			SortedMap<Short, Long> dataMap = new TreeMap<>(data);
 			SortedMap<Short, Long> firsthalf=	dataMap.subMap((short)intial, (short)mid);
-			SortedMap<Short, Long> secondhalf= dataMap.subMap((short)(mid+1),(short)total);
+			SortedMap<Short, Long> secondhalf= dataMap.subMap((short)(mid),(short)total);
 			DataIndexGenrationTask searchIndex = new DataIndexGenrationTask(firsthalf, false,depth++);
 			DataIndexGenrationTask searchIndex2 = new DataIndexGenrationTask(secondhalf, false,depth++);
 			invokeAll(searchIndex, searchIndex2);

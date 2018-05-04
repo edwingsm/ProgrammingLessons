@@ -52,8 +52,8 @@ public class IndexIntervalContainer implements IntervalContainer {
 			throw new IllegalArgumentException(
 					"The give Search range in not valid, Please provide a valid search range");
 		}
-		final ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
 		final IndexSearchTask task = new IndexSearchTask(index, fromValue, toValue, fromInclusive, toInclusive);
+		final ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
 		Set<Short> map = forkJoinPool.invoke(task);
 		forkJoinPool.shutdown();
 		return new ResultSetIdHolder(map);

@@ -42,6 +42,7 @@ public class IndexSearchTask extends RecursiveTask<TreeSet<Short>> {
 	}
 	
 	private TreeSet<Short> generateResult(Map<Long, List<Short>> index){
+		//Generting a list of ids from index
 		return new TreeSet<>(index.values().stream().flatMap(List::stream).collect(Collectors.toSet()));
 	}
 

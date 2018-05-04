@@ -1,4 +1,4 @@
-package ie.edwin.lesson.code.solutions;
+package ie.edwin.lesson.code.solutions.search;
 
 public class BinarySearch
 {

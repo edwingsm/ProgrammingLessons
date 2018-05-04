@@ -1,4 +1,4 @@
-package ie.edwin.lesson.code.solutions;
+package ie.edwin.lesson.code.solutions.problem;
 
 import java.util.ArrayList;
 import java.util.Arrays;

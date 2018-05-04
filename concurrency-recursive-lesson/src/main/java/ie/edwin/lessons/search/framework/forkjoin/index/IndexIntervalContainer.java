@@ -13,12 +13,12 @@ import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 import ie.edwin.lessons.search.framework.ResultSetIds;
 
-public class IndexRangeContainer implements IntervalContainer {
+public class IndexIntervalContainer implements IntervalContainer {
 
 	private HashMap<Short, Long> dataSource = new HashMap<Short, Long>();
 	private NavigableMap<Long, List<Short>> index = new ConcurrentSkipListMap<>();
 
-	public IndexRangeContainer(long[] data) throws ContainerOutofBoundException {
+	public IndexIntervalContainer(long[] data) throws ContainerOutofBoundException {
 		if (data == null || data.length == 0)
 			throw new ContainerOutofBoundException("Contianor can't be created with empty data");
 		else if (data.length > 32000)

@@ -9,11 +9,11 @@ import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 import ie.edwin.lessons.search.framework.ResultSetIds;
 
-public class ForkJoinRangeContainer implements IntervalContainer {
+public class ForkJoinIntervalContainer implements IntervalContainer {
 
 	private Map<Short, Long> dataSource = new HashMap<Short, Long>();
 
-	public ForkJoinRangeContainer(long[] data) throws ContainerOutofBoundException {
+	public ForkJoinIntervalContainer(long[] data) throws ContainerOutofBoundException {
 
 		if (data == null || data.length == 0)
 			throw new ContainerOutofBoundException("Contianor can't be created with empty data");

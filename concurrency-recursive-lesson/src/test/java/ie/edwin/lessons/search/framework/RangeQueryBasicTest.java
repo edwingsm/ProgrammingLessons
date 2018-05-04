@@ -8,10 +8,10 @@ import org.junit.Test;
 import ie.edwin.lessons.search.core.IdHolder;
 import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.core.IntervalContainerFactory;
-import ie.edwin.lessons.search.framework.forkjoin.ForkJoinRangeContainerFactory;
-import ie.edwin.lessons.search.framework.forkjoin.index.IndexRangeContainer;
-import ie.edwin.lessons.search.framework.forkjoin.index.IndexRangeContainerFactory;
-import ie.edwin.lessons.search.framework.stream.ParallelStreamRangeContainerFactory;
+import ie.edwin.lessons.search.framework.forkjoin.ForkJoinIntervalContainerFactory;
+import ie.edwin.lessons.search.framework.forkjoin.index.IndexIntervalContainer;
+import ie.edwin.lessons.search.framework.forkjoin.index.IndexIntervalContainerFactory;
+import ie.edwin.lessons.search.framework.stream.ParallelStreamIntervalContainerFactory;
 
 public class RangeQueryBasicTest {
 
@@ -19,7 +19,7 @@ public class RangeQueryBasicTest {
 
 	@Before
 	public void setUp() {
-		IntervalContainerFactory rf = new ForkJoinRangeContainerFactory();
+		IntervalContainerFactory rf = new ForkJoinIntervalContainerFactory();
 		rc = rf.createContainer(new long[] { 10, 12, 17, 21, 2, 15, 16 });
 	}
 

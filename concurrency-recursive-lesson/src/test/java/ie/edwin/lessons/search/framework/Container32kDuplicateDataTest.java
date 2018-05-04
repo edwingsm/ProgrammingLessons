@@ -8,9 +8,9 @@ import org.junit.Test;
 import ie.edwin.lessons.search.core.IdHolder;
 import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.core.IntervalContainerFactory;
-import ie.edwin.lessons.search.framework.forkjoin.ForkJoinRangeContainerFactory;
-import ie.edwin.lessons.search.framework.forkjoin.index.IndexRangeContainerFactory;
-import ie.edwin.lessons.search.framework.stream.ParallelStreamRangeContainerFactory;
+import ie.edwin.lessons.search.framework.forkjoin.ForkJoinIntervalContainerFactory;
+import ie.edwin.lessons.search.framework.forkjoin.index.IndexIntervalContainerFactory;
+import ie.edwin.lessons.search.framework.stream.ParallelStreamIntervalContainerFactory;
 
 
 
@@ -22,9 +22,9 @@ public class Container32kDuplicateDataTest {
 	
 	@Before
 	public void setUp(){
-		IntervalContainerFactory rf = new ParallelStreamRangeContainerFactory();
-		IntervalContainerFactory rf2 = new ForkJoinRangeContainerFactory();
-		IntervalContainerFactory rf3 = new IndexRangeContainerFactory();
+		IntervalContainerFactory rf = new ParallelStreamIntervalContainerFactory();
+		IntervalContainerFactory rf2 = new ForkJoinIntervalContainerFactory();
+		IntervalContainerFactory rf3 = new IndexIntervalContainerFactory();
 		long[] data = genrateTestData();
 		parallelRangeContainer = rf.createContainer(data);
 		forkJoinContianer = rf2.createContainer(data);

@@ -10,11 +10,11 @@ import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 import ie.edwin.lessons.search.framework.ResultSetIds;
 import ie.edwin.lessons.search.utils.SearchUtils;
 
-public class ParallelStreamRangeContainer implements IntervalContainer {
+public class ParallelStreamIntervalContainer implements IntervalContainer {
 
 	private ConcurrentNavigableMap<Short, Long> dataSource = new ConcurrentSkipListMap<Short, Long>();
 
-	ParallelStreamRangeContainer(long[] data) throws ContainerOutofBoundException {
+	ParallelStreamIntervalContainer(long[] data) throws ContainerOutofBoundException {
 		if (data == null || data.length == 0)
 			throw new ContainerOutofBoundException("Contianor can't be created with empty data");
 		else if (data.length > 32000)

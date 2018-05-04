@@ -98,7 +98,7 @@ public class Container32kUniqueDataTest {
 	}
 	
 	@Test
-	public void runARangeQuery_Parallel_bound_exclusive(){
+	public void runARangeQuery_Parallel_bound_inclusive(){
 		IdHolder ids = parallelRangeContainer.findIdsInRange(31999, 32000, true, true);
 		assertEquals(31998, ids.nextId());
 		assertEquals(31999, ids.nextId());
@@ -106,7 +106,7 @@ public class Container32kUniqueDataTest {
 	}
 	
 	@Test
-	public void runARangeQuery_forkJoin_bound_exclusive(){
+	public void runARangeQuery_forkJoin_bound_inclusive(){
 		IdHolder ids = forkJoinContianer.findIdsInRange(31999, 32000, true, true);
 		assertEquals(31998, ids.nextId());
 		assertEquals(31999, ids.nextId());
@@ -115,7 +115,7 @@ public class Container32kUniqueDataTest {
 	}
 	
 	@Test
-	public void runARangeQuery_forkJoin_index_exclusive(){
+	public void runARangeQuery_forkJoin_index_inclusive(){
 		IdHolder ids = indexContianer.findIdsInRange(31999, 32000, true, true);
 		assertEquals(31998, ids.nextId());
 		assertEquals(31999, ids.nextId());

@@ -30,7 +30,7 @@ public class ResultSetIdHolder implements IdHolder {
 		if (idIterator.hasNext()) {
 			return idIterator.next();
 		} else {
-			return -1;
+			return IdHolder.END_OF_IDS;
 		}
 	}
 

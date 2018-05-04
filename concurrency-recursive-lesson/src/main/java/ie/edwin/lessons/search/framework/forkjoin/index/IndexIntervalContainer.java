@@ -1,5 +1,6 @@
 package ie.edwin.lessons.search.framework.forkjoin.index;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,8 +14,8 @@ import ie.edwin.lessons.search.exceptions.ContainerOutofBoundException;
 import ie.edwin.lessons.search.framework.ResultSetIdHolder;
 
 public class IndexIntervalContainer implements IntervalContainer {
-
-	private SortedMap<Short, Long> dataSource = new TreeMap<Short, Long>();
+	//Keep Insertion order
+	private Map<Short, Long> dataSource = new LinkedHashMap<Short, Long>();
 	private SortedMap<Long, List<Short>> index = new TreeMap<>();
 
 	public IndexIntervalContainer(long[] data) throws ContainerOutofBoundException {

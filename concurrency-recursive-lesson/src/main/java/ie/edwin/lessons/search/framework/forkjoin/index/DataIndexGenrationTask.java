@@ -11,7 +11,6 @@ import java.util.concurrent.RecursiveTask;
 
 public class DataIndexGenrationTask extends RecursiveTask<Map<Long, List<Short>>> {
 
-	
 	private HashMap<Short, Long> data;
 	public final int dataThreshold = 10000;
 	// This flag is to prevent too much recursive call on the task
@@ -20,6 +19,7 @@ public class DataIndexGenrationTask extends RecursiveTask<Map<Long, List<Short>>
 	private int depth;
 	
 	public DataIndexGenrationTask(Map<Short, Long> dataMap, boolean intialspilt,int depth) {
+		//Just a simple hash map ,
 		this.data = new HashMap<>(dataMap);
 		this.intialsplit = intialspilt;
 		this.depth=depth;
@@ -30,13 +30,8 @@ public class DataIndexGenrationTask extends RecursiveTask<Map<Long, List<Short>>
 		if (data.size() > dataThreshold && intialsplit) {
 			int total=data.size(),intial=0, mid=total/2 ;
 			SortedMap<Short, Long> dataMap = new TreeMap<>(data);
-			
 			SortedMap<Short, Long> firsthalf=	dataMap.subMap((short)intial, (short)mid);
 			SortedMap<Short, Long> secondhalf= dataMap.subMap((short)(mid+1),(short)total);
-			//SortedMap<Short, Long> firsthalf = new TreeMap<Short, Long>(
-				//	dataMap.subMap((short) 0, true, (short) (data.size() / 2), false));
-			//NavigableMap<Short, Long> secondhalf = new ConcurrentSkipListMap<>(
-				//	dataMap.subMap((short) (data.size() / 2), true, (short) data.size(), false));
 			DataIndexGenrationTask searchIndex = new DataIndexGenrationTask(firsthalf, false,depth++);
 			DataIndexGenrationTask searchIndex2 = new DataIndexGenrationTask(secondhalf, false,depth++);
 			invokeAll(searchIndex, searchIndex2);

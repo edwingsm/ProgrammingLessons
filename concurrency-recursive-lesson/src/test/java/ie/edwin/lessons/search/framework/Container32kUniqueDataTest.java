@@ -11,7 +11,6 @@ import ie.edwin.lessons.search.core.IntervalContainerFactory;
 import ie.edwin.lessons.search.framework.forkjoin.ForkJoinIntervalContainerFactory;
 import ie.edwin.lessons.search.framework.forkjoin.index.IndexIntervalContainerFactory;
 import ie.edwin.lessons.search.framework.stream.ParallelStreamIntervalContainerFactory;
-import javafx.scene.control.IndexRange;
 
 
 

@@ -9,9 +9,6 @@ import ie.edwin.lessons.search.core.IdHolder;
 import ie.edwin.lessons.search.core.IntervalContainer;
 import ie.edwin.lessons.search.core.IntervalContainerFactory;
 import ie.edwin.lessons.search.framework.forkjoin.ForkJoinIntervalContainerFactory;
-import ie.edwin.lessons.search.framework.forkjoin.index.IndexIntervalContainer;
-import ie.edwin.lessons.search.framework.forkjoin.index.IndexIntervalContainerFactory;
-import ie.edwin.lessons.search.framework.stream.ParallelStreamIntervalContainerFactory;
 
 public class RangeQueryBasicTest {
 

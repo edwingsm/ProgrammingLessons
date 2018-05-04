@@ -1,11 +1,10 @@
 package ie.edwin.lessons.search.framework.forkjoin.index;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.NavigableMap;
 import java.util.Set;
-import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.concurrent.ForkJoinPool;
 
 import ie.edwin.lessons.search.core.IdHolder;
@@ -15,8 +14,8 @@ import ie.edwin.lessons.search.framework.ResultSetIdHolder;
 
 public class IndexIntervalContainer implements IntervalContainer {
 
-	private HashMap<Short, Long> dataSource = new HashMap<Short, Long>();
-	private NavigableMap<Long, List<Short>> index = new ConcurrentSkipListMap<>();
+	private SortedMap<Short, Long> dataSource = new TreeMap<Short, Long>();
+	private SortedMap<Long, List<Short>> index = new TreeMap<>();
 
 	public IndexIntervalContainer(long[] data) throws ContainerOutofBoundException {
 		if (data == null || data.length == 0)
@@ -38,9 +37,9 @@ public class IndexIntervalContainer implements IntervalContainer {
 		if(dataSource.isEmpty()) {	
 		}
 		
-		final DataIndexGenrationTask task  = new DataIndexGenrationTask(dataSource, true);
+		final DataIndexGenrationTask task  = new DataIndexGenrationTask(dataSource, true,1);
 		final ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
-		index =new ConcurrentSkipListMap<>(forkJoinPool.invoke(task));
+		index =new TreeMap<>(forkJoinPool.invoke(task));
 		forkJoinPool.shutdown();
 	};
 

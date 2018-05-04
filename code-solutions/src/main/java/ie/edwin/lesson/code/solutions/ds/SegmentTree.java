@@ -1,4 +1,4 @@
-package ie.edwin.lessons.search.core;
+package ie.edwin.lesson.code.solutions.ds;
 
 import java.io.BufferedReader;
 import java.io.IOException;
